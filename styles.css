@@ -1,0 +1,64 @@
+* {
+  overflow: none;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  size: *;
+}
+
+.container {
+  size: *;
+  margin: 0;
+  font: system;
+  flow: vertical;
+  background: #eee;
+  border-spacing: 5dip;
+  padding: 5dip;
+}
+
+.row>label {
+  white-space: nowrap;
+  vertical-align: baseline;
+  text-align: left;
+  width: *;
+}
+
+.row>input, .row>select, .row>button {
+  vertical-align: baseline;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: *;
+}
+
+option:hover {
+  background: rgb(138, 240, 101);
+}
+
+div.row {
+  border-spacing: 5dip;
+  flow: horizontal;
+  justify-content: space-between;
+}
+
+div.time {
+  size: *;
+  font-weight: bold;
+  font-size: 20dip;
+  text-align: center;
+  vertical-align: middle;
+}
+
+input>span {
+  font: system;
+}
+
+gray {
+  color: gray;
+}

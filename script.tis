@@ -1,0 +1,40 @@
+const DEBUGGING = false;
+
+DEBUGGING && view.connectToInspector && view.connectToInspector(rootElement, inspectorIpAddress);
+
+$(#about) << event click {
+  view.msgbox(#information,
+    "This application was written by GirkovArpa.\nIt uses Sciter Engine (https://sciter.com),\n© Terra Informatica Software, Inc.",
+    "About"
+  );
+}
+
+function formatTime(seconds) {
+  const d = Math.floor(seconds.toFloat() / 86400.0).toInteger();
+  const h = Math.floor((seconds / 3600.0).toInteger() % 24).toInteger();
+  const m = Math.floor((seconds % 3600) / 60).toInteger();
+  const s = Math.round(seconds % 60).toInteger();
+  return [
+    d,
+    h,
+    m > 9 ? m : (h ? "0" + m : m || "0"),
+    s > 9 ? s : "0" + s
+  ].map(|n| n.toString().length < 2 ? "0" + n : n);
+}
+
+const def = new Date();
+def.day += 1;
+$(input[type=date]).value = def;
+
+function tick() {
+  const { value } = $(input[type=date]);
+  const now = new Date();
+  const seconds = Date.diff(now, value, #seconds);
+  const o = formatTime(seconds);
+  $(div.time).html = String.$({o[0]}<gray>d</gray> {o[1]}<gray>h</gray> {o[2]}<gray>m</gray> {o[3]}<gray>s</gray>);
+  return true;
+}
+
+tick();
+
+self.timer(1s, tick);
